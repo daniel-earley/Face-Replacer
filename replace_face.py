@@ -1,6 +1,5 @@
 import pygame as pg
 import sys
-import os
 import cv2
 from pygame.locals import *
 
@@ -8,25 +7,25 @@ from pygame.locals import *
 pg.init()
 
 # File Paths
-xmlName = 'haarcascade_frontalface_default.xml'
-resourcePath = os.path.dirname(__file__)
-resourcePath = os.path.join(resourcePath, 'resources')
-xmlPath = os.path.join(resourcePath, xmlName)
+xmlName = './resources/haarcascade_frontalface_default.xml'
 
 # Need cascade classifier to read the haarcascade xml
-cascade = cv2.CascadeClassifier(xmlPath)
+cascade = cv2.CascadeClassifier(xmlName)
 
 # Setup pygame window and webcam
 W, H = 640, 480
 screen = pg.display.set_mode((W, H))
 webcam = cv2.VideoCapture(0)
 
-# Loop to capture video
+# Main Loop
 while True:
+    # Use Webcam to detect face
     unusedVar, cvImg = webcam.read()
     cv2.imwrite("./resources/frame.jpg", cvImg)
     grayscale = cv2.cvtColor(cvImg, cv2.COLOR_BGR2GRAY)
     faces = cascade.detectMultiScale(grayscale, 1.1, 15)
+
+    # Load webcam footage and replacement image
     camImg = pg.image.load("./resources/frame.jpg")
     newImg = pg.image.load("./resources/default.png")
     screen.blit(camImg, (0,0))
