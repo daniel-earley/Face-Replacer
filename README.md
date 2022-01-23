@@ -12,4 +12,15 @@ This program uses a combination of OpenCV and Pygame working in tandem. OpenCV a
 5. A png 
 
 ## How to Use
+1. Download or clone the repo using this link: https://github.com/daniel-earley/Face-Replacer.git or by clicking the green Code button.
+    a. If you downloaded the repo, then you will need to unzip the files
+2. Open the resources folder and replace *default.png* with any png file of your choice. Ensure that the file is named *default.png*
 
+## Running the program
+There are a couple of options for running the file.
+1. Navigate to the folder that has replace_face.py. Next open your terminal and type "python replace_face.py" without the quotation marks.
+2. Using a text editor or ide such as VSCode, navigate to the folder that has replace_face.py and open the file. Next press shift + f5 OR click the run button.
+
+## Extra Notes
+If your image doesn't properly line up on your face then there are a couple of ways you can try to fix this issue. For one thing you can feel free to edit the code to your heart's content, the program is pretty simple after all. If you're going to edit the code then you'll want to edit the w and h of this line ``newImg = pg.transform.scale(newImg, (w*2, h*2))``
+Otherwise you can also manually edit your png image, centering or scaling as you please.
